@@ -1,0 +1,18 @@
+.movie-card {
+  display: flex;
+  padding: 15px;
+}
+
+.movie-card__image-wrapp {
+  width: 500px;
+  margin-right: 30px;
+}
+
+.movie-card__image {
+  display: block;
+  width: 100%;
+}
+
+.movie-card__content {
+  padding: 40px 0;
+}
