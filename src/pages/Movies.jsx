@@ -1,13 +1,13 @@
 import { useParams, useSearchParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { getSearchedMovie, getMovie } from '../api';
+import React, { useEffect } from 'react';
+import { getSearchedMovie } from '../api';
 
 const Movies = () => {
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const movieName = searchParams.get('name') ?? '';
-
+  console.log(movieName);
   // const visibleMovies =
 
   useEffect(() => {
