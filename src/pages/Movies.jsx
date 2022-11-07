@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import React, { useState, useSearchParams, useEffect } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { getSearchedMovie, getMovie } from '../api';
 
 const Movies = () => {

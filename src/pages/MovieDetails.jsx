@@ -1,4 +1,4 @@
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { getMovie, imageBaseUrl } from '../api';
 
