@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from './Layout/Layout';
 import { AppWrapp } from './App.styled';
 import Home from 'pages/Home';
