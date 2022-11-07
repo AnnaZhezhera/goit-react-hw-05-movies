@@ -18,7 +18,7 @@ const Home = ({ onMovieClick }) => {
       <ul>
         {trendingMovies.map(movie => (
           <li key={movie.original_title}>
-            <Link to={'Movies/' + movie.id}>{movie.original_title}</Link>
+            <Link to={'/movies/' + movie.id}>{movie.original_title}</Link>
           </li>
         ))}
       </ul>

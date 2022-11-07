@@ -35,9 +35,9 @@ export const getReviews = async movieId => {
   return response.data;
 };
 
-export const getSearchedMovie = async movieId => {
+export const getSearchedMovies = async searchWord => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=bf5cf1e2c182dc5f850732c19ce27d26`
+    `https://api.themoviedb.org/3/search/movie?query=${searchWord}&api_key=bf5cf1e2c182dc5f850732c19ce27d26`
   );
   console.log('search', response.data);
   return response.data;
