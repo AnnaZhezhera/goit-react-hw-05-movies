@@ -1,17 +1,21 @@
 import { useParams } from 'react-router-dom';
-import React, { useSearchParams, useEffect } from 'react';
-import { getSearchedMovie } from '../api';
+import React, { useState, useSearchParams, useEffect } from 'react';
+import { getSearchedMovie, getMovie } from '../api';
 
 const Movies = () => {
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const movieName = searchParams.get('name') ?? '';
+
+  // const visibleMovies =
 
   useEffect(() => {
     const getFilteredMovieById = async movieId => {
       setSearchParams(await getSearchedMovie(movieId));
     };
     getFilteredMovieById(id).catch(console.error);
-  }, [id]);
+  }, [id, setSearchParams]);
   return (
     <main>
       <form>
