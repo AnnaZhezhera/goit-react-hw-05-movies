@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { getSearchedMovies } from '../api';
 
 const Movies = () => {
-  const [searchParams, setSearchParams] = useSearchParams('');
-
-  const [movieSearch, setMovieSearch] = useState('');
-
-  const [searchedMovies, setSearchedMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams({});
   const movieName = searchParams.get('query') ?? '';
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const [searchedMovies, setSearchedMovies] = useState([]);
+
   const location = useLocation();
+
+  //   const [error, setError] = useState(null);
 
   useEffect(() => {
     const getFilteredMovies = async searchWord => {
@@ -18,22 +20,28 @@ const Movies = () => {
     };
 
     if (movieName) {
-      console.log('movieName', movieName);
       getFilteredMovies(movieName).catch(console.error);
+    }
+  }, [movieName]);
+
+  useEffect(() => {
+    if (movieName) {
+      setSearchQuery(movieName);
     }
   }, [movieName]);
 
   const onChangeInput = e => {
     const inputSearch = e.target.value;
-    setMovieSearch(inputSearch);
+    setSearchQuery(inputSearch);
   };
 
   const updateQueryString = e => {
     e.preventDefault();
-    if (movieSearch) {
-      setSearchParams({ query: movieSearch });
+    if (searchQuery.trim()) {
+      setSearchParams({ query: searchQuery });
     } else {
-      setSearchParams({});
+      setSearchParams();
+      alert('The input is empty. Please choose a film. ');
     }
   };
 
@@ -43,11 +51,14 @@ const Movies = () => {
         <input
           type="text"
           name="input"
-          value={movieSearch}
+          value={searchQuery}
           onChange={onChangeInput}
         />
         <input type="submit" value="Search" />
       </form>
+      {searchedMovies.results && searchedMovies.results.length === 0 && (
+        <p>Nothing was found</p>
+      )}
       <ul>
         {searchedMovies.results &&
           searchedMovies.results.map(searchedMovie => (

@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import React, { lazy } from 'react';
 import { Layout } from './Layout/Layout';
 import { AppWrapp } from './App.styled';
+import { NotFound } from './NotFound';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -20,6 +21,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<NotFound />} /> setSearchQuery(movieName);
         </Route>
       </Routes>
     </AppWrapp>
