@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { getSearchedMovies } from '../api';
 
@@ -10,6 +10,8 @@ const Movies = () => {
 
   const [searchedMovies, setSearchedMovies] = useState([]);
   const movieName = searchParams.get('query') ?? '';
+
+  const location = useLocation();
 
   useEffect(() => {
     const getFilteredMovies = async searchWord => {
@@ -37,13 +39,15 @@ const Movies = () => {
     }
   };
 
+  console.log(location);
+
   return (
     <main>
       <form onSubmit={updateQueryString}>
         <input
           type="text"
           name="input"
-          value={movieName}
+          value={movieSearch}
           onChange={onChangeInput}
         />
         <input type="submit" value="Search" />
@@ -52,7 +56,10 @@ const Movies = () => {
         {searchedMovies.results &&
           searchedMovies.results.map(searchedMovie => (
             <li key={searchedMovie.id}>
-              <Link to={'/movies/' + searchedMovie.id}>
+              <Link
+                to={'/movies/' + searchedMovie.id}
+                state={{ from: location }}
+              >
                 {searchedMovie.original_title}
               </Link>
             </li>

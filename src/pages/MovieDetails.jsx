@@ -1,10 +1,13 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import React, { Suspense, useState, useEffect } from 'react';
 import { getMovie, imageBaseUrl } from '../api';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [currentMovie, setCurrentMovie] = useState({});
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     const getMovieById = async movieId => {
@@ -16,6 +19,7 @@ const MovieDetails = () => {
   return (
     currentMovie.id && (
       <main>
+        <Link to={backLinkHref}>Back to products</Link>
         <div className="movie-card">
           <div className="movie-card__image-wrapp">
             <img
@@ -44,7 +48,9 @@ const MovieDetails = () => {
             </li>
           </ul>
         </div>
-        <Outlet />
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     )
   );
