@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { fetchMovies } from '../api';
 
-const Home = ({ onMovieClick }) => {
+const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   const location = useLocation();

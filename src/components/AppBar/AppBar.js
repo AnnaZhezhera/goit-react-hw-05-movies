@@ -1,10 +1,5 @@
 import { AppBarWrapp, StyledLink } from './AppBar.styled';
 
-// const navItems = [
-//   { href: 'home', text: 'Home' },
-//   { href: 'movies', text: 'Movies' },
-// ];
-
 export const AppBar = () => {
   return (
     <AppBarWrapp>

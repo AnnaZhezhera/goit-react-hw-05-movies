@@ -5,7 +5,6 @@ import { getSearchedMovies } from '../api';
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams('');
 
-  //movieSearch - пошуковій запит, який ввів користувач в input
   const [movieSearch, setMovieSearch] = useState('');
 
   const [searchedMovies, setSearchedMovies] = useState([]);
@@ -27,7 +26,6 @@ const Movies = () => {
   const onChangeInput = e => {
     const inputSearch = e.target.value;
     setMovieSearch(inputSearch);
-    console.log(inputSearch);
   };
 
   const updateQueryString = e => {
@@ -38,8 +36,6 @@ const Movies = () => {
       setSearchParams({});
     }
   };
-
-  console.log(location);
 
   return (
     <main>
