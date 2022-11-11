@@ -9,6 +9,7 @@ const MovieDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
+  console.log(location.state.from);
   useEffect(() => {
     const getMovieById = async movieId => {
       setCurrentMovie(await getMovie(movieId));
@@ -41,10 +42,15 @@ const MovieDetails = () => {
           <p>Additional Information</p>
           <ul>
             <li>
-              <Link to="cast">Cast</Link>
+              {/* state={{ from: location}} - стр, яку відвідали на минулому кроці */}
+              <Link to="cast" state={{ from: location.state?.from }}>
+                Cast
+              </Link>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Link to="reviews" state={{ from: location.state?.from }}>
+                Reviews
+              </Link>
             </li>
           </ul>
         </div>
