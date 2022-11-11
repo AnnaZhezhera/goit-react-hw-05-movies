@@ -10,6 +10,7 @@
 
 .movie-card__image {
   display: block;
+  width: 300px;
 }
 
 .movie-card__content {
